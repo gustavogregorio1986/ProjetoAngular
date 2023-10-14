@@ -14,7 +14,7 @@ export class ClienteService {
   cadastrar(dados: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post('/api/cliente/Cadastrar', dados, { headers });
+    return this.http.post('https://localhost:44338//api/cliente/Cadastrar', dados, { headers });
   }
 
 

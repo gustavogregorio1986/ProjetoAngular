@@ -12,6 +12,12 @@ export class FormularioComponent {
 
   form !:FormGroup;
 
+  dados = {
+    nomeCliente: '',
+    emailCliente: '',
+    cpf:''
+  };
+
   constructor(private fb : FormBuilder, private clienteService: ClienteService){
       this.form = this.fb.group({
           nomeCliente: new FormControl(''),

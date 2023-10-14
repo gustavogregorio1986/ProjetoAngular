@@ -2,12 +2,12 @@
 
   <h1>{{ title }}</h1>
 
-  <form [formGroup]="form" *ngIf="form">
-     Nome de Cliente:<input type="text" formControlName="nomeCliente" id="nomeCliente" name="nomeCliente"/>
+  <form [formGroup]="form" (ngSubmit)="salvar()" *ngIf="form">
+     Nome de Cliente:<input type="text" formControlName="nomeCliente" [(ngModel)]="dados.nomeCliente" id="nomeCliente" name="nomeCliente"/>
      <br/><br/>
-     Email de Cliente:<input type="text" formControlName="emailCliente" id="emailCliente" name="emailCliente"/>
+     Email de Cliente:<input type="text" formControlName="emailCliente" [(ngModel)]="dados.emailCliente" id="emailCliente" name="emailCliente"/>
      <br/><br/>
-     Cpf de Cliente:<input type="text" formControlName="cpf" id="cpf" name="cpf"/>
+     Cpf de Cliente:<input type="text" formControlName="cpf" [(ngModel)]="dados.cpf" id="cpf" name="cpf"/>
      <hr/>
      <button type="submit" ((click)="salvar()">Cadatrar Cliente</button>
   </form>
