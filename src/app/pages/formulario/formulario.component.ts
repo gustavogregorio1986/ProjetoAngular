@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ClienteService } from 'src/app/service/ClienteService';
 
 @Component({
   selector: 'app-formulario',
@@ -11,11 +12,13 @@ export class FormularioComponent {
 
   form !:FormGroup;
 
-  constructor(private fb : FormBuilder){
+  constructor(private fb : FormBuilder, private clienteService: ClienteService){
       this.form = this.fb.group({
           nomeCliente: new FormControl(''),
           emailCliente: new FormControl(''),
           cpf: new FormControl(''),
       });
   }
+
+
 }
