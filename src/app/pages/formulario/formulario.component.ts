@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClienteService } from 'src/app/service/ClienteService';
+import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
   selector: 'app-formulario',
@@ -20,5 +20,14 @@ export class FormularioComponent {
       });
   }
 
+  salvar(){
 
+    const dados = { title: 'cliente', body: 'cadastrar', userId: 1 };
+
+      this.clienteService.cadastrar(dados).subscribe((data) => {
+           console.log('Dados Gravados',data);
+      },(error) => {
+        console.error('Erro ao enviar dados:', error);
+      });
+  }
 }

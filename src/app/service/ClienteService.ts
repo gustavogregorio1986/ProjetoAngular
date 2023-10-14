@@ -9,6 +9,8 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
+  
+
   cadastrar(dados: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
