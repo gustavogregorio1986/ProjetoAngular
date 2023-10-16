@@ -1,6 +1,6 @@
 export class Cliente {
-    idCliente!: number;
-    nomeCliente!: string;
-    emailCliente!: string;
-    cpf!: string;
+    IdCliente!: number;
+    NomeCliente!: string;
+    EmailCliente!: string;
+    Cpf!: string;
 }

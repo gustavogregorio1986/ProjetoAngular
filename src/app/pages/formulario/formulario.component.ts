@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { response } from 'express';
 import { ClienteService } from 'src/app/service/cliente.service';
 
 @Component({
@@ -13,27 +14,26 @@ export class FormularioComponent {
   form !:FormGroup;
 
   dados = {
-    nomeCliente: '',
-    emailCliente: '',
-    cpf:''
+    NomeCliente: '',
+    EmailCliente: '',
+    Cpf:''
   };
 
   constructor(private fb : FormBuilder, private clienteService: ClienteService){
       this.form = this.fb.group({
-          nomeCliente: new FormControl(''),
-          emailCliente: new FormControl(''),
-          cpf: new FormControl(''),
+          NomeCliente: new FormControl(''),
+          EmailCliente: new FormControl(''),
+          Cpf: new FormControl(''),
       });
   }
 
-  salvar(){
-
-    const dados = { title: 'cliente', body: 'cadastrar', userId: 1 };
-
-      this.clienteService.cadastrar(dados).subscribe((data) => {
-           console.log('Dados Gravados',data);
-      },(error) => {
-        console.error('Erro ao enviar dados:', error);
-      });
+  salvar(dados: any){
+      this.clienteService.cadastrar(dados).subscribe(
+        response => {
+            console.log('Dados Gravados com sucesso.', dados);
+        }, error => {
+          console.error('Erro ao salvar os dados', error);
+        }
+      )
   }
 }
