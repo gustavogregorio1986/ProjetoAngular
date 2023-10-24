@@ -1,0 +1,16 @@
+.tabela, th, td{
+  border-collapse: collapse; /*define a separação entre as bordar*/
+  padding: 10px;
+  text-align: left;
+}
+th{
+  background-color: lightgray;
+}
+
+.tabela{
+  margin:  0 auto;
+}
+
+.center{
+ text-align: center;
+}

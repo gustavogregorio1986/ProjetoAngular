@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { response } from 'express';
 import { ClienteService } from 'src/app/service/cliente.service';
 
@@ -11,15 +12,12 @@ import { ClienteService } from 'src/app/service/cliente.service';
 export class FormularioComponent {
   title = 'Cadastro de Produtos';
 
+  mensagem!: string;
+  dados:any = {}
   form !:FormGroup;
 
-  dados = {
-    NomeCliente: '',
-    EmailCliente: '',
-    Cpf:''
-  };
 
-  constructor(private fb : FormBuilder, private clienteService: ClienteService){
+  constructor(private fb : FormBuilder, private clienteService: ClienteService, private router: Router){
       this.form = this.fb.group({
           NomeCliente: new FormControl(''),
           EmailCliente: new FormControl(''),
@@ -30,10 +28,19 @@ export class FormularioComponent {
   salvar(dados: any){
       this.clienteService.cadastrar(dados).subscribe(
         response => {
-            console.log('Dados Gravados com sucesso.', dados);
+          this.mensagem = 'Cliente salvos com sucesso!';
         }, error => {
+          this.mensagem = 'Cliente n~]ao foi possivel salvar';
           console.error('Erro ao salvar os dados', error);
         }
       )
+  }
+
+  limparCampos(){
+     this.dados = {};
+  }
+
+  goToConsultaPage() {
+    this.router.navigate(['/consulta']);
   }
 }

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-
 
 
 
@@ -17,5 +17,8 @@ export class ClienteService {
     return this.http.post('https://localhost:44338/api/cliente/Cadastrar', dados, { headers });
   }
 
+  getClientes(): Observable<any[]> {
+    return this.http.get<any[]>('https://localhost:44338/api/cliente/ListarClientes');
+  }
 
 }
